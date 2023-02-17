@@ -1,11 +1,11 @@
 [package]
 name = "phoron_core"
 description = "A serializer and deserializer for JVM bytecode"
-version = "0.4.0"
+version = "0.4.1"
 authors = ["Timmy Jose"]
-homepage = "https://github.com/oyi-lang/oyi-manifesto/tree/master/projects/phoron/phoron_rs/phoron_core"
+homepage = "https://github.com/oyi-lang/phoron_core"
 documentation = "https://docs.rs/phoron_core/latest/phoron_core/"
-repository = "https://github.com/oyi-lang/oyi-manifesto/tree/master/projects/phoron/phoron_rs/phoron_core"
+repository = "https://github.com/oyi-lang/phoron_core"
 readme = "README.md"
 license-file = "LICENSE"
 keywords = ["jvm", "bytecode", "serializer", "deserializer"]
