@@ -1030,13 +1030,7 @@ impl<'a, W: Write> Serializer<'a, W> {
 
         self.writer.write_unsigned_short(classfile.access_flags)?;
         self.writer.write_unsigned_short(classfile.this_class)?;
-
-        let mut super_class = classfile.super_class;
-        // if super_class == 0 then this is ``java.lang.Object``
-        if super_class > 0 {
-            super_class += 1;
-        }
-        self.writer.write_unsigned_short(super_class)?;
+        self.writer.write_unsigned_short(classfile.super_class)?;
 
         self.writer
             .write_unsigned_short(classfile.interfaces_count)?;
@@ -1115,35 +1109,47 @@ mod test {
         use crate::model::{attributes::AttributeInfo::*, constant_pool::types::CpInfo::*};
 
         let expected_bytes = [
-            0xca, 0xfe, 0xba, 0xbe, 0x00, 0x03, 0x00, 0x2d, 0x00, 0x0e, 0x0a, 0x00, 0x0d, 0x00,
-            0x07, 0x01, 0x00, 0x10, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f,
-            0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x01, 0x00, 0x0a, 0x53, 0x6f, 0x75, 0x72, 0x63,
-            0x65, 0x46, 0x69, 0x6c, 0x65, 0x01, 0x00, 0x06, 0x3c, 0x69, 0x6e, 0x69, 0x74, 0x3e,
-            0x01, 0x00, 0x04, 0x6d, 0x61, 0x69, 0x6e, 0x01, 0x00, 0x07, 0x4d, 0x69, 0x6e, 0x69,
-            0x6d, 0x61, 0x6c, 0x0c, 0x00, 0x04, 0x00, 0x0b, 0x01, 0x00, 0x04, 0x43, 0x6f, 0x64,
-            0x65, 0x01, 0x00, 0x0c, 0x4d, 0x69, 0x6e, 0x69, 0x6d, 0x61, 0x6c, 0x2e, 0x6a, 0x61,
-            0x76, 0x61, 0x01, 0x00, 0x16, 0x28, 0x5b, 0x4c, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c,
-            0x61, 0x6e, 0x67, 0x2f, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3b, 0x29, 0x56, 0x01,
-            0x00, 0x03, 0x28, 0x29, 0x56, 0x07, 0x00, 0x06, 0x07, 0x00, 0x02, 0x00, 0x21, 0x00,
-            0x0c, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x04, 0x00,
-            0x0b, 0x00, 0x01, 0x00, 0x08, 0x00, 0x00, 0x00, 0x11, 0x00, 0x01, 0x00, 0x01, 0x00,
-            0x00, 0x00, 0x05, 0x2a, 0xb7, 0x00, 0x01, 0xb1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09,
-            0x00, 0x05, 0x00, 0x0a, 0x00, 0x01, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x01,
-            0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0xb1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00,
-            0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x09,
+            0xca, 0xfe, 0xba, 0xbe, 0x00, 0x00, 0x00, 0x41, 0x00, 0x0f, 0x0a, 0x00, 0x02, 0x00,
+            0x03, 0x07, 0x00, 0x04, 0x0c, 0x00, 0x05, 0x00, 0x06, 0x01, 0x00, 0x10, 0x6a, 0x61,
+            0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+            0x01, 0x00, 0x06, 0x3c, 0x69, 0x6e, 0x69, 0x74, 0x3e, 0x01, 0x00, 0x03, 0x28, 0x29,
+            0x56, 0x07, 0x00, 0x08, 0x01, 0x00, 0x07, 0x4d, 0x69, 0x6e, 0x69, 0x6d, 0x61, 0x6c,
+            0x01, 0x00, 0x04, 0x43, 0x6f, 0x64, 0x65, 0x01, 0x00, 0x0f, 0x4c, 0x69, 0x6e, 0x65,
+            0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x54, 0x61, 0x62, 0x6c, 0x65, 0x01, 0x00, 0x04,
+            0x6d, 0x61, 0x69, 0x6e, 0x01, 0x00, 0x16, 0x28, 0x5b, 0x4c, 0x6a, 0x61, 0x76, 0x61,
+            0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3b, 0x29,
+            0x56, 0x01, 0x00, 0x0a, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x46, 0x69, 0x6c, 0x65,
+            0x01, 0x00, 0x0c, 0x4d, 0x69, 0x6e, 0x69, 0x6d, 0x61, 0x6c, 0x2e, 0x6a, 0x61, 0x76,
+            0x61, 0x00, 0x21, 0x00, 0x07, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00,
+            0x01, 0x00, 0x05, 0x00, 0x06, 0x00, 0x01, 0x00, 0x09, 0x00, 0x00, 0x00, 0x1d, 0x00,
+            0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x2a, 0xb7, 0x00, 0x01, 0xb1, 0x00, 0x00,
+            0x00, 0x01, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
+            0x00, 0x09, 0x00, 0x0b, 0x00, 0x0c, 0x00, 0x01, 0x00, 0x09, 0x00, 0x00, 0x00, 0x19,
+            0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0xb1, 0x00, 0x00, 0x00, 0x01, 0x00,
+            0x0a, 0x00, 0x00, 0x00, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00,
+            0x0d, 0x00, 0x00, 0x00, 0x02, 0x00, 0x0e,
         ];
 
         let classfile = ClassFile {
             magic: 3405691582,
-            minor_version: 3,
-            major_version: 45,
-            constant_pool_count: 14,
+            minor_version: 0,
+            major_version: 65,
+            constant_pool_count: 15,
             constant_pool: vec![
                 None,
                 Some(ConstantMethodrefInfo {
                     tag: 10,
-                    class_index: 13,
-                    name_and_type_index: 7,
+                    class_index: 2,
+                    name_and_type_index: 3,
+                }),
+                Some(ConstantClassInfo {
+                    tag: 7,
+                    name_index: 4,
+                }),
+                Some(ConstantNameAndTypeInfo {
+                    tag: 12,
+                    name_index: 5,
+                    descriptor_index: 6,
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
@@ -1154,28 +1160,22 @@ mod test {
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
-                    length: 10,
-                    bytes: vec![83, 111, 117, 114, 99, 101, 70, 105, 108, 101],
-                }),
-                Some(ConstantUtf8Info {
-                    tag: 1,
                     length: 6,
                     bytes: vec![60, 105, 110, 105, 116, 62],
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
-                    length: 4,
-                    bytes: vec![109, 97, 105, 110],
+                    length: 3,
+                    bytes: vec![40, 41, 86],
+                }),
+                Some(ConstantClassInfo {
+                    tag: 7,
+                    name_index: 8,
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
                     length: 7,
                     bytes: vec![77, 105, 110, 105, 109, 97, 108],
-                }),
-                Some(ConstantNameAndTypeInfo {
-                    tag: 12,
-                    name_index: 4,
-                    descriptor_index: 11,
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
@@ -1184,8 +1184,15 @@ mod test {
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
-                    length: 12,
-                    bytes: vec![77, 105, 110, 105, 109, 97, 108, 46, 106, 97, 118, 97],
+                    length: 15,
+                    bytes: vec![
+                        76, 105, 110, 101, 78, 117, 109, 98, 101, 114, 84, 97, 98, 108, 101,
+                    ],
+                }),
+                Some(ConstantUtf8Info {
+                    tag: 1,
+                    length: 4,
+                    bytes: vec![109, 97, 105, 110],
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
@@ -1197,21 +1204,18 @@ mod test {
                 }),
                 Some(ConstantUtf8Info {
                     tag: 1,
-                    length: 3,
-                    bytes: vec![40, 41, 86],
+                    length: 10,
+                    bytes: vec![83, 111, 117, 114, 99, 101, 70, 105, 108, 101],
                 }),
-                Some(ConstantClassInfo {
-                    tag: 7,
-                    name_index: 6,
-                }),
-                Some(ConstantClassInfo {
-                    tag: 7,
-                    name_index: 2,
+                Some(ConstantUtf8Info {
+                    tag: 1,
+                    length: 12,
+                    bytes: vec![77, 105, 110, 105, 109, 97, 108, 46, 106, 97, 118, 97],
                 }),
             ],
             access_flags: 33,
-            this_class: 12,
-            super_class: 12,
+            this_class: 7,
+            super_class: 2,
             interfaces_count: 0,
             interfaces: vec![],
             fields_count: 0,
@@ -1220,46 +1224,62 @@ mod test {
             methods: vec![
                 MethodInfo {
                     access_flags: 1,
-                    name_index: 4,
-                    descriptor_index: 11,
+                    name_index: 5,
+                    descriptor_index: 6,
                     attributes_count: 1,
                     attributes: vec![Code {
-                        attribute_name_index: 8,
-                        attribute_length: 17,
+                        attribute_name_index: 9,
+                        attribute_length: 29,
                         max_stack: 1,
                         max_locals: 1,
                         code_length: 5,
                         code: vec![42, 183, 0, 1, 177],
                         exception_table_length: 0,
                         exception_table: vec![],
-                        code_attributes_count: 0,
-                        code_attributes: vec![],
+                        code_attributes_count: 1,
+                        code_attributes: vec![LineNumberTable {
+                            attribute_name_index: 10,
+                            attribute_length: 6,
+                            line_number_table_length: 1,
+                            line_number_table: vec![LineNumber {
+                                start_pc: 0,
+                                line_number: 1,
+                            }],
+                        }],
                     }],
                 },
                 MethodInfo {
                     access_flags: 9,
-                    name_index: 5,
-                    descriptor_index: 10,
+                    name_index: 11,
+                    descriptor_index: 12,
                     attributes_count: 1,
                     attributes: vec![Code {
-                        attribute_name_index: 8,
-                        attribute_length: 13,
-                        max_stack: 1,
+                        attribute_name_index: 9,
+                        attribute_length: 25,
+                        max_stack: 0,
                         max_locals: 1,
                         code_length: 1,
                         code: vec![177],
                         exception_table_length: 0,
                         exception_table: vec![],
-                        code_attributes_count: 0,
-                        code_attributes: vec![],
+                        code_attributes_count: 1,
+                        code_attributes: vec![LineNumberTable {
+                            attribute_name_index: 10,
+                            attribute_length: 6,
+                            line_number_table_length: 1,
+                            line_number_table: vec![LineNumber {
+                                start_pc: 0,
+                                line_number: 2,
+                            }],
+                        }],
                     }],
                 },
             ],
             attributes_count: 1,
             attributes: vec![SourceFile {
-                attribute_name_index: 3,
+                attribute_name_index: 13,
                 attribute_length: 2,
-                sourcefile_index: 9,
+                sourcefile_index: 14,
             }],
         };
 
