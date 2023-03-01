@@ -1,4 +1,3 @@
-// todo: move ths to a higher-level client such as `phoron_asm`
 pub mod tags {
     pub const CONSTANT_INVALID_DEFAULT: u8 = 255;
     pub const CONSTANT_CLASS: u8 = 7;
@@ -21,12 +20,13 @@ pub mod tags {
 }
 
 pub mod types {
-    #[derive(Debug, Clone)]
+    #[derive(PartialEq, Eq, Hash, Debug, Clone)]
     pub enum CpInfo {
         ConstantClassInfo {
             tag: u8,
             name_index: u16,
         },
+
         ConstantFieldrefInfo {
             tag: u8,
             class_index: u16,

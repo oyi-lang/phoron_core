@@ -45,7 +45,6 @@ pub struct MethodInfo {
     pub attributes: Vec<AttributeInfo>,
 }
 
-// todo: move this to a higher-level client such as `phoron_asm`
 pub mod access_flags {
     pub const ACC_PUBLIC: u16 = 0x0001;
     pub const ACC_PRIVATE: u16 = 0x0002;
