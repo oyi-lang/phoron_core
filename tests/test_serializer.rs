@@ -3097,3 +3097,867 @@ fn test_serialize_catcher() -> SerializerResult {
 
     Ok(())
 }
+
+//Classfile /Users/z0ltan/dev/playground/LookupswitchDemo.class
+//  Last modified 07-Mar-2023; size 533 bytes
+//  SHA-256 checksum f31ae9c21e28ccbd6126dfd09b46ee6ba0f21426bf83390913a4911b49d241d8
+//  Compiled from "LookupSwitchDemo.pho"
+//public class LookupswitchDemo
+//  minor version: 3
+//  major version: 45
+//  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+//  this_class: #5                          // LookupswitchDemo
+//  super_class: #10                        // java/lang/Object
+//  interfaces: 0, fields: 0, methods: 3, attributes: 1
+//Constant pool:
+//   #1 = Integer            200
+//   #2 = Utf8               LookupswitchDemo
+//   #3 = Utf8               ()V
+//   #4 = Utf8               main
+//   #5 = Class              #2             // LookupswitchDemo
+//   #6 = NameAndType        #23:#22        // println:(I)V
+//   #7 = Integer            10
+//   #8 = Integer            100
+//   #9 = Utf8               java/lang/Object
+//  #10 = Class              #9             // java/lang/Object
+//  #11 = Integer            1
+//  #12 = Integer            0
+//  #13 = Integer            12345
+//  #14 = Utf8               java/lang/System
+//  #15 = Class              #14            // java/lang/System
+//  #16 = NameAndType        #19:#32        // demo:(I)I
+//  #17 = Methodref          #5.#16         // LookupswitchDemo.demo:(I)I
+//  #18 = Utf8               ([Ljava/lang/String;)V
+//  #19 = Utf8               demo
+//  #20 = NameAndType        #25:#3         // "<init>":()V
+//  #21 = Class              #35            // java/io/PrintStream
+//  #22 = Utf8               (I)V
+//  #23 = Utf8               println
+//  #24 = Utf8               SourceFile
+//  #25 = Utf8               <init>
+//  #26 = Methodref          #21.#6         // java/io/PrintStream.println:(I)V
+//  #27 = NameAndType        #28:#36        // out:Ljava/io/PrintStream;
+//  #28 = Utf8               out
+//  #29 = Utf8               LookupSwitchDemo.pho
+//  #30 = Methodref          #10.#20        // java/lang/Object."<init>":()V
+//  #31 = Methodref          #5.#20         // LookupswitchDemo."<init>":()V
+//  #32 = Utf8               (I)I
+//  #33 = Fieldref           #15.#27        // java/lang/System.out:Ljava/io/PrintStream;
+//  #34 = Utf8               Code
+//  #35 = Utf8               java/io/PrintStream
+//  #36 = Utf8               Ljava/io/PrintStream;
+//{
+//  public LookupswitchDemo();
+//    descriptor: ()V
+//    flags: (0x0001) ACC_PUBLIC
+//    Code:
+//      stack=1, locals=1, args_size=1
+//         0: aload_0
+//         1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+//         4: return
+//
+//  private int demo(int);
+//    descriptor: (I)I
+//    flags: (0x0002) ACC_PRIVATE
+//    Code:
+//      stack=3, locals=3, args_size=2
+//         0: iload_1
+//         1: lookupswitch  { // 2
+//                       1: 28
+//                      10: 31
+//                 default: 34
+//            }
+//        28: ldc           #7                  // int 10
+//        30: ireturn
+//        31: ldc           #8                  // int 100
+//        33: ireturn
+//        34: ldc           #12                 // int 0
+//        36: ireturn
+//
+//  public static void main(java.lang.String[]);
+//    descriptor: ([Ljava/lang/String;)V
+//    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+//    Code:
+//      stack=3, locals=3, args_size=1
+//         0: new           #5                  // class LookupswitchDemo
+//         3: dup
+//         4: invokespecial #31                 // Method "<init>":()V
+//         7: astore_1
+//         8: aload_1
+//         9: ldc           #11                 // int 1
+//        11: invokevirtual #17                 // Method demo:(I)I
+//        14: jsr           54
+//        17: aload_1
+//        18: ldc           #7                  // int 10
+//        20: invokevirtual #17                 // Method demo:(I)I
+//        23: jsr           54
+//        26: aload_1
+//        27: ldc           #8                  // int 100
+//        29: invokevirtual #17                 // Method demo:(I)I
+//        32: jsr           54
+//        35: aload_1
+//        36: ldc           #1                  // int 200
+//        38: invokevirtual #17                 // Method demo:(I)I
+//        41: jsr           54
+//        44: aload_1
+//        45: ldc           #13                 // int 12345
+//        47: invokevirtual #17                 // Method demo:(I)I
+//        50: jsr           54
+//        53: return
+//        54: astore_2
+//        55: getstatic     #33                 // Field java/lang/System.out:Ljava/io/PrintStream;
+//        58: swap
+//        59: invokevirtual #26                 // Method java/io/PrintStream.println:(I)V
+//        62: ret           2
+//}
+//SourceFile: "LookupSwitchDemo.pho"
+#[test]
+fn test_serialize_lookupswitchdemo() -> SerializerResult {
+    let expected_bytes = [
+        0xca, 0xfe, 0xba, 0xbe, 0x00, 0x03, 0x00, 0x2d, 0x00, 0x25, 0x03, 0x00, 0x00, 0x00, 0xc8,
+        0x01, 0x00, 0x10, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x73, 0x77, 0x69, 0x74, 0x63, 0x68,
+        0x44, 0x65, 0x6d, 0x6f, 0x01, 0x00, 0x03, 0x28, 0x29, 0x56, 0x01, 0x00, 0x04, 0x6d, 0x61,
+        0x69, 0x6e, 0x07, 0x00, 0x02, 0x0c, 0x00, 0x17, 0x00, 0x16, 0x03, 0x00, 0x00, 0x00, 0x0a,
+        0x03, 0x00, 0x00, 0x00, 0x64, 0x01, 0x00, 0x10, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61,
+        0x6e, 0x67, 0x2f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x07, 0x00, 0x09, 0x03, 0x00, 0x00,
+        0x00, 0x01, 0x03, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x30, 0x39, 0x01, 0x00, 0x10,
+        0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x53, 0x79, 0x73, 0x74, 0x65,
+        0x6d, 0x07, 0x00, 0x0e, 0x0c, 0x00, 0x13, 0x00, 0x20, 0x0a, 0x00, 0x05, 0x00, 0x10, 0x01,
+        0x00, 0x16, 0x28, 0x5b, 0x4c, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f,
+        0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3b, 0x29, 0x56, 0x01, 0x00, 0x04, 0x64, 0x65, 0x6d,
+        0x6f, 0x0c, 0x00, 0x19, 0x00, 0x03, 0x07, 0x00, 0x23, 0x01, 0x00, 0x04, 0x28, 0x49, 0x29,
+        0x56, 0x01, 0x00, 0x07, 0x70, 0x72, 0x69, 0x6e, 0x74, 0x6c, 0x6e, 0x01, 0x00, 0x0a, 0x53,
+        0x6f, 0x75, 0x72, 0x63, 0x65, 0x46, 0x69, 0x6c, 0x65, 0x01, 0x00, 0x06, 0x3c, 0x69, 0x6e,
+        0x69, 0x74, 0x3e, 0x0a, 0x00, 0x15, 0x00, 0x06, 0x0c, 0x00, 0x1c, 0x00, 0x24, 0x01, 0x00,
+        0x03, 0x6f, 0x75, 0x74, 0x01, 0x00, 0x14, 0x4c, 0x6f, 0x6f, 0x6b, 0x75, 0x70, 0x53, 0x77,
+        0x69, 0x74, 0x63, 0x68, 0x44, 0x65, 0x6d, 0x6f, 0x2e, 0x70, 0x68, 0x6f, 0x0a, 0x00, 0x0a,
+        0x00, 0x14, 0x0a, 0x00, 0x05, 0x00, 0x14, 0x01, 0x00, 0x04, 0x28, 0x49, 0x29, 0x49, 0x09,
+        0x00, 0x0f, 0x00, 0x1b, 0x01, 0x00, 0x04, 0x43, 0x6f, 0x64, 0x65, 0x01, 0x00, 0x13, 0x6a,
+        0x61, 0x76, 0x61, 0x2f, 0x69, 0x6f, 0x2f, 0x50, 0x72, 0x69, 0x6e, 0x74, 0x53, 0x74, 0x72,
+        0x65, 0x61, 0x6d, 0x01, 0x00, 0x15, 0x4c, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x69, 0x6f, 0x2f,
+        0x50, 0x72, 0x69, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x3b, 0x00, 0x21, 0x00,
+        0x05, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0x19, 0x00, 0x03,
+        0x00, 0x01, 0x00, 0x22, 0x00, 0x00, 0x00, 0x11, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00,
+        0x05, 0x2a, 0xb7, 0x00, 0x1e, 0xb1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x13, 0x00,
+        0x20, 0x00, 0x01, 0x00, 0x22, 0x00, 0x00, 0x00, 0x31, 0x00, 0x03, 0x00, 0x03, 0x00, 0x00,
+        0x00, 0x25, 0x1b, 0xab, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x02, 0x00,
+        0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x1b, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x1e,
+        0x12, 0x07, 0xac, 0x12, 0x08, 0xac, 0x12, 0x0c, 0xac, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09,
+        0x00, 0x04, 0x00, 0x12, 0x00, 0x01, 0x00, 0x22, 0x00, 0x00, 0x00, 0x4c, 0x00, 0x03, 0x00,
+        0x03, 0x00, 0x00, 0x00, 0x40, 0xbb, 0x00, 0x05, 0x59, 0xb7, 0x00, 0x1f, 0x4c, 0x2b, 0x12,
+        0x0b, 0xb6, 0x00, 0x11, 0xa8, 0x00, 0x28, 0x2b, 0x12, 0x07, 0xb6, 0x00, 0x11, 0xa8, 0x00,
+        0x1f, 0x2b, 0x12, 0x08, 0xb6, 0x00, 0x11, 0xa8, 0x00, 0x16, 0x2b, 0x12, 0x01, 0xb6, 0x00,
+        0x11, 0xa8, 0x00, 0x0d, 0x2b, 0x12, 0x0d, 0xb6, 0x00, 0x11, 0xa8, 0x00, 0x04, 0xb1, 0x4d,
+        0xb2, 0x00, 0x21, 0x5f, 0xb6, 0x00, 0x1a, 0xa9, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01,
+        0x00, 0x18, 0x00, 0x00, 0x00, 0x02, 0x00, 0x1d,
+    ];
+
+    let classfile = ClassFile {
+        magic: 3405691582,
+        minor_version: 3,
+        major_version: 45,
+        constant_pool_count: 37,
+        constant_pool: vec![
+            None,
+            Some(ConstantIntegerInfo { tag: 3, bytes: 200 }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 16,
+                bytes: vec![
+                    76, 111, 111, 107, 117, 112, 115, 119, 105, 116, 99, 104, 68, 101, 109, 111,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 3,
+                bytes: vec![40, 41, 86],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![109, 97, 105, 110],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 2,
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 23,
+                descriptor_index: 22,
+            }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 10 }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 100 }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 16,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 79, 98, 106, 101, 99, 116,
+                ],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 9,
+            }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 1 }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 0 }),
+            Some(ConstantIntegerInfo {
+                tag: 3,
+                bytes: 12345,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 16,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 83, 121, 115, 116, 101, 109,
+                ],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 14,
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 19,
+                descriptor_index: 32,
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 5,
+                name_and_type_index: 16,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 22,
+                bytes: vec![
+                    40, 91, 76, 106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 83, 116, 114, 105,
+                    110, 103, 59, 41, 86,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![100, 101, 109, 111],
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 25,
+                descriptor_index: 3,
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 35,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![40, 73, 41, 86],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 7,
+                bytes: vec![112, 114, 105, 110, 116, 108, 110],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 10,
+                bytes: vec![83, 111, 117, 114, 99, 101, 70, 105, 108, 101],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 6,
+                bytes: vec![60, 105, 110, 105, 116, 62],
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 21,
+                name_and_type_index: 6,
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 28,
+                descriptor_index: 36,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 3,
+                bytes: vec![111, 117, 116],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 20,
+                bytes: vec![
+                    76, 111, 111, 107, 117, 112, 83, 119, 105, 116, 99, 104, 68, 101, 109, 111, 46,
+                    112, 104, 111,
+                ],
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 10,
+                name_and_type_index: 20,
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 5,
+                name_and_type_index: 20,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![40, 73, 41, 73],
+            }),
+            Some(ConstantFieldrefInfo {
+                tag: 9,
+                class_index: 15,
+                name_and_type_index: 27,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![67, 111, 100, 101],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 19,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 105, 111, 47, 80, 114, 105, 110, 116, 83, 116, 114, 101,
+                    97, 109,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 21,
+                bytes: vec![
+                    76, 106, 97, 118, 97, 47, 105, 111, 47, 80, 114, 105, 110, 116, 83, 116, 114,
+                    101, 97, 109, 59,
+                ],
+            }),
+        ],
+        access_flags: 33,
+        this_class: 5,
+        super_class: 10,
+        interfaces_count: 0,
+        interfaces: vec![],
+        fields_count: 0,
+        fields: vec![],
+        methods_count: 3,
+        methods: vec![
+            MethodInfo {
+                access_flags: 1,
+                name_index: 25,
+                descriptor_index: 3,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 34,
+                    attribute_length: 17,
+                    max_stack: 1,
+                    max_locals: 1,
+                    code_length: 5,
+                    code: vec![42, 183, 0, 30, 177],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+            MethodInfo {
+                access_flags: 2,
+                name_index: 19,
+                descriptor_index: 32,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 34,
+                    attribute_length: 49,
+                    max_stack: 3,
+                    max_locals: 3,
+                    code_length: 37,
+                    code: vec![
+                        27, 171, 0, 0, 0, 0, 0, 33, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 27, 0, 0, 0,
+                        10, 0, 0, 0, 30, 18, 7, 172, 18, 8, 172, 18, 12, 172,
+                    ],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+            MethodInfo {
+                access_flags: 9,
+                name_index: 4,
+                descriptor_index: 18,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 34,
+                    attribute_length: 76,
+                    max_stack: 3,
+                    max_locals: 3,
+                    code_length: 64,
+                    code: vec![
+                        187, 0, 5, 89, 183, 0, 31, 76, 43, 18, 11, 182, 0, 17, 168, 0, 40, 43, 18,
+                        7, 182, 0, 17, 168, 0, 31, 43, 18, 8, 182, 0, 17, 168, 0, 22, 43, 18, 1,
+                        182, 0, 17, 168, 0, 13, 43, 18, 13, 182, 0, 17, 168, 0, 4, 177, 77, 178, 0,
+                        33, 95, 182, 0, 26, 169, 2,
+                    ],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+        ],
+        attributes_count: 1,
+        attributes: vec![SourceFile {
+            attribute_name_index: 24,
+            attribute_length: 2,
+            sourcefile_index: 29,
+        }],
+    };
+
+    let mut bytes = Vec::new();
+    let mut serializer = Serializer::new(Writer::new(&mut bytes));
+    serializer.serialize(&classfile)?;
+    assert_eq!(expected_bytes, &bytes[..]);
+
+    Ok(())
+}
+
+//Classfile /Users/z0ltan/dev/oyi-lang/phoron_asm/doc/grammar/TableswitchDemo.class
+//  Last modified 07-Mar-2023; size 558 bytes
+//  SHA-256 checksum fe89e7d28f29984e66a5a2b34c945f70077e82a7cd4c83eff63e70d14486210c
+//  Compiled from "TableswitchDemo.pho"
+//public class TableswitchDemo
+//  minor version: 3
+//  major version: 45
+//  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+//  this_class: #8                          // TableswitchDemo
+//  super_class: #11                        // java/lang/Object
+//  interfaces: 0, fields: 0, methods: 3, attributes: 1
+//Constant pool:
+//   #1 = Integer            200
+//   #2 = Integer            19
+//   #3 = Utf8               ()V
+//   #4 = Utf8               main
+//   #5 = Integer            199
+//   #6 = NameAndType        #28:#26        // println:(I)V
+//   #7 = Integer            100
+//   #8 = Class              #16            // TableswitchDemo
+//   #9 = Utf8               java/lang/Object
+//  #10 = Methodref          #8.#19         // TableswitchDemo.demo:(I)I
+//  #11 = Class              #9             // java/lang/Object
+//  #12 = Integer            2
+//  #13 = Integer            1
+//  #14 = Integer            0
+//  #15 = Integer            12345
+//  #16 = Utf8               TableswitchDemo
+//  #17 = Utf8               java/lang/System
+//  #18 = Class              #17            // java/lang/System
+//  #19 = NameAndType        #23:#34        // demo:(I)I
+//  #20 = Utf8               TableswitchDemo.pho
+//  #21 = Methodref          #8.#24         // TableswitchDemo."<init>":()V
+//  #22 = Utf8               ([Ljava/lang/String;)V
+//  #23 = Utf8               demo
+//  #24 = NameAndType        #29:#3         // "<init>":()V
+//  #25 = Class              #37            // java/io/PrintStream
+//  #26 = Utf8               (I)V
+//  #27 = Utf8               SourceFile
+//  #28 = Utf8               println
+//  #29 = Utf8               <init>
+//  #30 = Methodref          #25.#6         // java/io/PrintStream.println:(I)V
+//  #31 = NameAndType        #32:#39        // out:Ljava/io/PrintStream;
+//  #32 = Utf8               out
+//  #33 = Methodref          #11.#24        // java/lang/Object."<init>":()V
+//  #34 = Utf8               (I)I
+//  #35 = Fieldref           #18.#31        // java/lang/System.out:Ljava/io/PrintStream;
+//  #36 = Utf8               Code
+//  #37 = Utf8               java/io/PrintStream
+//  #38 = Integer            1009
+//  #39 = Utf8               Ljava/io/PrintStream;
+//{
+//  public TableswitchDemo();
+//    descriptor: ()V
+//    flags: (0x0001) ACC_PUBLIC
+//    Code:
+//      stack=1, locals=1, args_size=1
+//         0: aload_0
+//         1: invokespecial #33                 // Method java/lang/Object."<init>":()V
+//         4: return
+//
+//  private int demo(int);
+//    descriptor: (I)I
+//    flags: (0x0002) ACC_PRIVATE
+//    Code:
+//      stack=3, locals=3, args_size=2
+//         0: iload_1
+//         1: tableswitch   { // 0 to 2
+//                       0: 28
+//                       1: 31
+//                       2: 34
+//                 default: 37
+//            }
+//        28: ldc           #2                  // int 19
+//        30: ireturn
+//        31: ldc           #5                  // int 199
+//        33: ireturn
+//        34: ldc           #38                 // int 1009
+//        36: ireturn
+//        37: ldc           #14                 // int 0
+//        39: ireturn
+//
+//  public static void main(java.lang.String[]);
+//    descriptor: ([Ljava/lang/String;)V
+//    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+//    Code:
+//      stack=3, locals=3, args_size=1
+//         0: new           #8                  // class TableswitchDemo
+//         3: dup
+//         4: invokespecial #21                 // Method "<init>":()V
+//         7: astore_1
+//         8: aload_1
+//         9: ldc           #14                 // int 0
+//        11: invokevirtual #10                 // Method demo:(I)I
+//        14: jsr           63
+//        17: aload_1
+//        18: ldc           #13                 // int 1
+//        20: invokevirtual #10                 // Method demo:(I)I
+//        23: jsr           63
+//        26: aload_1
+//        27: ldc           #12                 // int 2
+//        29: invokevirtual #10                 // Method demo:(I)I
+//        32: jsr           63
+//        35: aload_1
+//        36: ldc           #7                  // int 100
+//        38: invokevirtual #10                 // Method demo:(I)I
+//        41: jsr           63
+//        44: aload_1
+//        45: ldc           #1                  // int 200
+//        47: invokevirtual #10                 // Method demo:(I)I
+//        50: jsr           63
+//        53: aload_1
+//        54: ldc           #15                 // int 12345
+//        56: invokevirtual #10                 // Method demo:(I)I
+//        59: jsr           63
+//        62: return
+//        63: astore_2
+//        64: getstatic     #35                 // Field java/lang/System.out:Ljava/io/PrintStream;
+//        67: swap
+//        68: invokevirtual #30                 // Method java/io/PrintStream.println:(I)V
+//        71: ret           2
+//}
+//SourceFile: "TableswitchDemo.pho"
+#[test]
+fn test_serialize_tableswitchdemo() -> SerializerResult {
+    let expected_bytes = [
+        0xca, 0xfe, 0xba, 0xbe, 0x00, 0x03, 0x00, 0x2d, 0x00, 0x28, 0x03, 0x00, 0x00, 0x00, 0xc8,
+        0x03, 0x00, 0x00, 0x00, 0x13, 0x01, 0x00, 0x03, 0x28, 0x29, 0x56, 0x01, 0x00, 0x04, 0x6d,
+        0x61, 0x69, 0x6e, 0x03, 0x00, 0x00, 0x00, 0xc7, 0x0c, 0x00, 0x1c, 0x00, 0x1a, 0x03, 0x00,
+        0x00, 0x00, 0x64, 0x07, 0x00, 0x10, 0x01, 0x00, 0x10, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c,
+        0x61, 0x6e, 0x67, 0x2f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x0a, 0x00, 0x08, 0x00, 0x13,
+        0x07, 0x00, 0x09, 0x03, 0x00, 0x00, 0x00, 0x02, 0x03, 0x00, 0x00, 0x00, 0x01, 0x03, 0x00,
+        0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x30, 0x39, 0x01, 0x00, 0x0f, 0x54, 0x61, 0x62, 0x6c,
+        0x65, 0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0x44, 0x65, 0x6d, 0x6f, 0x01, 0x00, 0x10, 0x6a,
+        0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6d,
+        0x07, 0x00, 0x11, 0x0c, 0x00, 0x17, 0x00, 0x22, 0x01, 0x00, 0x13, 0x54, 0x61, 0x62, 0x6c,
+        0x65, 0x73, 0x77, 0x69, 0x74, 0x63, 0x68, 0x44, 0x65, 0x6d, 0x6f, 0x2e, 0x70, 0x68, 0x6f,
+        0x0a, 0x00, 0x08, 0x00, 0x18, 0x01, 0x00, 0x16, 0x28, 0x5b, 0x4c, 0x6a, 0x61, 0x76, 0x61,
+        0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3b, 0x29, 0x56,
+        0x01, 0x00, 0x04, 0x64, 0x65, 0x6d, 0x6f, 0x0c, 0x00, 0x1d, 0x00, 0x03, 0x07, 0x00, 0x25,
+        0x01, 0x00, 0x04, 0x28, 0x49, 0x29, 0x56, 0x01, 0x00, 0x0a, 0x53, 0x6f, 0x75, 0x72, 0x63,
+        0x65, 0x46, 0x69, 0x6c, 0x65, 0x01, 0x00, 0x07, 0x70, 0x72, 0x69, 0x6e, 0x74, 0x6c, 0x6e,
+        0x01, 0x00, 0x06, 0x3c, 0x69, 0x6e, 0x69, 0x74, 0x3e, 0x0a, 0x00, 0x19, 0x00, 0x06, 0x0c,
+        0x00, 0x20, 0x00, 0x27, 0x01, 0x00, 0x03, 0x6f, 0x75, 0x74, 0x0a, 0x00, 0x0b, 0x00, 0x18,
+        0x01, 0x00, 0x04, 0x28, 0x49, 0x29, 0x49, 0x09, 0x00, 0x12, 0x00, 0x1f, 0x01, 0x00, 0x04,
+        0x43, 0x6f, 0x64, 0x65, 0x01, 0x00, 0x13, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x69, 0x6f, 0x2f,
+        0x50, 0x72, 0x69, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x03, 0x00, 0x00, 0x03,
+        0xf1, 0x01, 0x00, 0x15, 0x4c, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x69, 0x6f, 0x2f, 0x50, 0x72,
+        0x69, 0x6e, 0x74, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x3b, 0x00, 0x21, 0x00, 0x08, 0x00,
+        0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0x1d, 0x00, 0x03, 0x00, 0x01,
+        0x00, 0x24, 0x00, 0x00, 0x00, 0x11, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x2a,
+        0xb7, 0x00, 0x21, 0xb1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x17, 0x00, 0x22, 0x00,
+        0x01, 0x00, 0x24, 0x00, 0x00, 0x00, 0x34, 0x00, 0x03, 0x00, 0x03, 0x00, 0x00, 0x00, 0x28,
+        0x1b, 0xaa, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x02, 0x00, 0x00, 0x00, 0x1b, 0x00, 0x00, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x21, 0x12, 0x02,
+        0xac, 0x12, 0x05, 0xac, 0x12, 0x26, 0xac, 0x12, 0x0e, 0xac, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x09, 0x00, 0x04, 0x00, 0x16, 0x00, 0x01, 0x00, 0x24, 0x00, 0x00, 0x00, 0x55, 0x00, 0x03,
+        0x00, 0x03, 0x00, 0x00, 0x00, 0x49, 0xbb, 0x00, 0x08, 0x59, 0xb7, 0x00, 0x15, 0x4c, 0x2b,
+        0x12, 0x0e, 0xb6, 0x00, 0x0a, 0xa8, 0x00, 0x31, 0x2b, 0x12, 0x0d, 0xb6, 0x00, 0x0a, 0xa8,
+        0x00, 0x28, 0x2b, 0x12, 0x0c, 0xb6, 0x00, 0x0a, 0xa8, 0x00, 0x1f, 0x2b, 0x12, 0x07, 0xb6,
+        0x00, 0x0a, 0xa8, 0x00, 0x16, 0x2b, 0x12, 0x01, 0xb6, 0x00, 0x0a, 0xa8, 0x00, 0x0d, 0x2b,
+        0x12, 0x0f, 0xb6, 0x00, 0x0a, 0xa8, 0x00, 0x04, 0xb1, 0x4d, 0xb2, 0x00, 0x23, 0x5f, 0xb6,
+        0x00, 0x1e, 0xa9, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1b, 0x00, 0x00, 0x00,
+        0x02, 0x00, 0x14,
+    ];
+
+    let classfile = ClassFile {
+        magic: 3405691582,
+        minor_version: 3,
+        major_version: 45,
+        constant_pool_count: 40,
+        constant_pool: vec![
+            None,
+            Some(ConstantIntegerInfo { tag: 3, bytes: 200 }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 19 }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 3,
+                bytes: vec![40, 41, 86],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![109, 97, 105, 110],
+            }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 199 }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 28,
+                descriptor_index: 26,
+            }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 100 }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 16,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 16,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 79, 98, 106, 101, 99, 116,
+                ],
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 8,
+                name_and_type_index: 19,
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 9,
+            }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 2 }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 1 }),
+            Some(ConstantIntegerInfo { tag: 3, bytes: 0 }),
+            Some(ConstantIntegerInfo {
+                tag: 3,
+                bytes: 12345,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 15,
+                bytes: vec![
+                    84, 97, 98, 108, 101, 115, 119, 105, 116, 99, 104, 68, 101, 109, 111,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 16,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 83, 121, 115, 116, 101, 109,
+                ],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 17,
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 23,
+                descriptor_index: 34,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 19,
+                bytes: vec![
+                    84, 97, 98, 108, 101, 115, 119, 105, 116, 99, 104, 68, 101, 109, 111, 46, 112,
+                    104, 111,
+                ],
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 8,
+                name_and_type_index: 24,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 22,
+                bytes: vec![
+                    40, 91, 76, 106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 83, 116, 114, 105,
+                    110, 103, 59, 41, 86,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![100, 101, 109, 111],
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 29,
+                descriptor_index: 3,
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 37,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![40, 73, 41, 86],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 10,
+                bytes: vec![83, 111, 117, 114, 99, 101, 70, 105, 108, 101],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 7,
+                bytes: vec![112, 114, 105, 110, 116, 108, 110],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 6,
+                bytes: vec![60, 105, 110, 105, 116, 62],
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 25,
+                name_and_type_index: 6,
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 32,
+                descriptor_index: 39,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 3,
+                bytes: vec![111, 117, 116],
+            }),
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 11,
+                name_and_type_index: 24,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![40, 73, 41, 73],
+            }),
+            Some(ConstantFieldrefInfo {
+                tag: 9,
+                class_index: 18,
+                name_and_type_index: 31,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![67, 111, 100, 101],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 19,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 105, 111, 47, 80, 114, 105, 110, 116, 83, 116, 114, 101,
+                    97, 109,
+                ],
+            }),
+            Some(ConstantIntegerInfo {
+                tag: 3,
+                bytes: 1009,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 21,
+                bytes: vec![
+                    76, 106, 97, 118, 97, 47, 105, 111, 47, 80, 114, 105, 110, 116, 83, 116, 114,
+                    101, 97, 109, 59,
+                ],
+            }),
+        ],
+        access_flags: 33,
+        this_class: 8,
+        super_class: 11,
+        interfaces_count: 0,
+        interfaces: vec![],
+        fields_count: 0,
+        fields: vec![],
+        methods_count: 3,
+        methods: vec![
+            MethodInfo {
+                access_flags: 1,
+                name_index: 29,
+                descriptor_index: 3,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 36,
+                    attribute_length: 17,
+                    max_stack: 1,
+                    max_locals: 1,
+                    code_length: 5,
+                    code: vec![42, 183, 0, 33, 177],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+            MethodInfo {
+                access_flags: 2,
+                name_index: 23,
+                descriptor_index: 34,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 36,
+                    attribute_length: 52,
+                    max_stack: 3,
+                    max_locals: 3,
+                    code_length: 40,
+                    code: vec![
+                        27, 170, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 27, 0, 0, 0,
+                        30, 0, 0, 0, 33, 18, 2, 172, 18, 5, 172, 18, 38, 172, 18, 14, 172,
+                    ],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+            MethodInfo {
+                access_flags: 9,
+                name_index: 4,
+                descriptor_index: 22,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 36,
+                    attribute_length: 85,
+                    max_stack: 3,
+                    max_locals: 3,
+                    code_length: 73,
+                    code: vec![
+                        187, 0, 8, 89, 183, 0, 21, 76, 43, 18, 14, 182, 0, 10, 168, 0, 49, 43, 18,
+                        13, 182, 0, 10, 168, 0, 40, 43, 18, 12, 182, 0, 10, 168, 0, 31, 43, 18, 7,
+                        182, 0, 10, 168, 0, 22, 43, 18, 1, 182, 0, 10, 168, 0, 13, 43, 18, 15, 182,
+                        0, 10, 168, 0, 4, 177, 77, 178, 0, 35, 95, 182, 0, 30, 169, 2,
+                    ],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+        ],
+        attributes_count: 1,
+        attributes: vec![SourceFile {
+            attribute_name_index: 27,
+            attribute_length: 2,
+            sourcefile_index: 20,
+        }],
+    };
+
+    let mut bytes = Vec::new();
+    let mut serializer = Serializer::new(Writer::new(&mut bytes));
+    serializer.serialize(&classfile)?;
+    assert_eq!(expected_bytes, &bytes[..]);
+
+    Ok(())
+}
