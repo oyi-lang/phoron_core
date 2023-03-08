@@ -6666,3 +6666,241 @@ fn test_serialize_interface_demo() -> SerializerResult {
 
     Ok(())
 }
+
+//Classfile /Users/z0ltan/dev/oyi-lang/phoron_asm/doc/grammar/ImplementsDemo.class
+//  Last modified 08-Mar-2023; size 284 bytes
+//  SHA-256 checksum dbe95ed6f6317377cbf0159a3c0c46cb12164888157a0179b7865f4d007cec20
+//  Compiled from "ImplementsDemo.pho"
+//class ImplementsDemo implements java.lang.Runnable,java.io.Serializable
+//  minor version: 3
+//  major version: 45
+//  flags: (0x0020) ACC_SUPER
+//  this_class: #12                         // ImplementsDemo
+//  super_class: #17                        // java/lang/Object
+//  interfaces: 2, fields: 0, methods: 2, attributes: 1
+//Constant pool:
+//   #1 = Methodref          #17.#10        // java/lang/Object."<init>":()V
+//   #2 = Utf8               java/lang/Object
+//   #3 = Utf8               ImplementsDemo
+//   #4 = Utf8               SourceFile
+//   #5 = Utf8               <init>
+//   #6 = Utf8               java/lang/Runnable
+//   #7 = Utf8               java/io/Serializable
+//   #8 = Utf8               main
+//   #9 = Class              #7             // java/io/Serializable
+//  #10 = NameAndType        #5:#14         // "<init>":()V
+//  #11 = Utf8               Code
+//  #12 = Class              #3             // ImplementsDemo
+//  #13 = Utf8               ([Ljava/lang/String;)V
+//  #14 = Utf8               ()V
+//  #15 = Utf8               ImplementsDemo.pho
+//  #16 = Class              #6             // java/lang/Runnable
+//  #17 = Class              #2             // java/lang/Object
+//{
+//  public ImplementsDemo();
+//    descriptor: ()V
+//    flags: (0x0001) ACC_PUBLIC
+//    Code:
+//      stack=1, locals=1, args_size=1
+//         0: aload_0
+//         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+//         4: return
+//
+//  public static void main(java.lang.String[]);
+//    descriptor: ([Ljava/lang/String;)V
+//    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+//    Code:
+//      stack=1, locals=1, args_size=1
+//         0: return
+//}
+//SourceFile: "ImplementsDemo.pho"
+#[test]
+fn test_serialize_implements_demo() -> SerializerResult {
+    let expected_bytes = [
+        0xca, 0xfe, 0xba, 0xbe, 0x00, 0x03, 0x00, 0x2d, 0x00, 0x12, 0x0a, 0x00, 0x11, 0x00, 0x0a,
+        0x01, 0x00, 0x10, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x4f, 0x62,
+        0x6a, 0x65, 0x63, 0x74, 0x01, 0x00, 0x0e, 0x49, 0x6d, 0x70, 0x6c, 0x65, 0x6d, 0x65, 0x6e,
+        0x74, 0x73, 0x44, 0x65, 0x6d, 0x6f, 0x01, 0x00, 0x0a, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65,
+        0x46, 0x69, 0x6c, 0x65, 0x01, 0x00, 0x06, 0x3c, 0x69, 0x6e, 0x69, 0x74, 0x3e, 0x01, 0x00,
+        0x12, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x52, 0x75, 0x6e, 0x6e,
+        0x61, 0x62, 0x6c, 0x65, 0x01, 0x00, 0x14, 0x6a, 0x61, 0x76, 0x61, 0x2f, 0x69, 0x6f, 0x2f,
+        0x53, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x69, 0x7a, 0x61, 0x62, 0x6c, 0x65, 0x01, 0x00, 0x04,
+        0x6d, 0x61, 0x69, 0x6e, 0x07, 0x00, 0x07, 0x0c, 0x00, 0x05, 0x00, 0x0e, 0x01, 0x00, 0x04,
+        0x43, 0x6f, 0x64, 0x65, 0x07, 0x00, 0x03, 0x01, 0x00, 0x16, 0x28, 0x5b, 0x4c, 0x6a, 0x61,
+        0x76, 0x61, 0x2f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x3b,
+        0x29, 0x56, 0x01, 0x00, 0x03, 0x28, 0x29, 0x56, 0x01, 0x00, 0x12, 0x49, 0x6d, 0x70, 0x6c,
+        0x65, 0x6d, 0x65, 0x6e, 0x74, 0x73, 0x44, 0x65, 0x6d, 0x6f, 0x2e, 0x70, 0x68, 0x6f, 0x07,
+        0x00, 0x06, 0x07, 0x00, 0x02, 0x00, 0x20, 0x00, 0x0c, 0x00, 0x11, 0x00, 0x02, 0x00, 0x10,
+        0x00, 0x09, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x05, 0x00, 0x0e, 0x00, 0x01, 0x00,
+        0x0b, 0x00, 0x00, 0x00, 0x11, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x05, 0x2a, 0xb7,
+        0x00, 0x01, 0xb1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x08, 0x00, 0x0d, 0x00, 0x01,
+        0x00, 0x0b, 0x00, 0x00, 0x00, 0x0d, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0xb1,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x0f,
+    ];
+
+    let classfile = ClassFile {
+        magic: 3405691582,
+        minor_version: 3,
+        major_version: 45,
+        constant_pool_count: 18,
+        constant_pool: vec![
+            None,
+            Some(ConstantMethodrefInfo {
+                tag: 10,
+                class_index: 17,
+                name_and_type_index: 10,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 16,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 79, 98, 106, 101, 99, 116,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 14,
+                bytes: vec![
+                    73, 109, 112, 108, 101, 109, 101, 110, 116, 115, 68, 101, 109, 111,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 10,
+                bytes: vec![83, 111, 117, 114, 99, 101, 70, 105, 108, 101],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 6,
+                bytes: vec![60, 105, 110, 105, 116, 62],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 18,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 82, 117, 110, 110, 97, 98, 108,
+                    101,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 20,
+                bytes: vec![
+                    106, 97, 118, 97, 47, 105, 111, 47, 83, 101, 114, 105, 97, 108, 105, 122, 97,
+                    98, 108, 101,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![109, 97, 105, 110],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 7,
+            }),
+            Some(ConstantNameAndTypeInfo {
+                tag: 12,
+                name_index: 5,
+                descriptor_index: 14,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 4,
+                bytes: vec![67, 111, 100, 101],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 3,
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 22,
+                bytes: vec![
+                    40, 91, 76, 106, 97, 118, 97, 47, 108, 97, 110, 103, 47, 83, 116, 114, 105,
+                    110, 103, 59, 41, 86,
+                ],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 3,
+                bytes: vec![40, 41, 86],
+            }),
+            Some(ConstantUtf8Info {
+                tag: 1,
+                length: 18,
+                bytes: vec![
+                    73, 109, 112, 108, 101, 109, 101, 110, 116, 115, 68, 101, 109, 111, 46, 112,
+                    104, 111,
+                ],
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 6,
+            }),
+            Some(ConstantClassInfo {
+                tag: 7,
+                name_index: 2,
+            }),
+        ],
+        access_flags: 32,
+        this_class: 12,
+        super_class: 17,
+        interfaces_count: 2,
+        interfaces: vec![16, 9],
+        fields_count: 0,
+        fields: vec![],
+        methods_count: 2,
+        methods: vec![
+            MethodInfo {
+                access_flags: 1,
+                name_index: 5,
+                descriptor_index: 14,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 11,
+                    attribute_length: 17,
+                    max_stack: 1,
+                    max_locals: 1,
+                    code_length: 5,
+                    code: vec![42, 183, 0, 1, 177],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+            MethodInfo {
+                access_flags: 9,
+                name_index: 8,
+                descriptor_index: 13,
+                attributes_count: 1,
+                attributes: vec![Code {
+                    attribute_name_index: 11,
+                    attribute_length: 13,
+                    max_stack: 1,
+                    max_locals: 1,
+                    code_length: 1,
+                    code: vec![177],
+                    exception_table_length: 0,
+                    exception_table: vec![],
+                    code_attributes_count: 0,
+                    code_attributes: vec![],
+                }],
+            },
+        ],
+        attributes_count: 1,
+        attributes: vec![SourceFile {
+            attribute_name_index: 4,
+            attribute_length: 2,
+            sourcefile_index: 15,
+        }],
+    };
+
+    let mut bytes = Vec::new();
+    let mut serializer = Serializer::new(Writer::new(&mut bytes));
+    serializer.serialize(&classfile)?;
+    assert_eq!(expected_bytes, &bytes[..]);
+
+    Ok(())
+}
